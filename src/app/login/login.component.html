@@ -7,13 +7,16 @@
       <mat-form-field>
 
         <input matInput type="email" name="email"
-               placeholder="Email">
+          ngModel #email="ngModel"
+          placeholder="Email">
 
       </mat-form-field>
 
       <mat-form-field>
 
-        <input matInput type="password" placeholder="Password">
+        <input matInput type="password" name="password"
+          ngModel #password="ngModel"
+          placeholder="Password">
 
       </mat-form-field>
 
@@ -25,4 +28,13 @@
     </form>
 
   </mat-card-content>
+  
 </mat-card>
+
+<!-- <div class="form-val">
+  {{loginForm.value | json}} 
+</div>     -->
+
+<div class="form-val"> 
+  {{email.value + ' ' + password.value}}
+</div> 
