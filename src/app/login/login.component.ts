@@ -22,8 +22,11 @@ export class LoginComponent implements OnInit {
   //For ngSubmit, with native event
   login(loginForm: NgForm, submit) {
     console.log(loginForm.value, loginForm.valid, submit) //{email: 'hello@gmai.com', password: 'azerty'} true, SubmitEvent {...}
-  }
+  } 
 
-  
+  //this method print in console each new value from the email input
+  onEmailChange(change) {
+    console.log('Email onChange ', change)
+  }
 
 }

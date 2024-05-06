@@ -8,7 +8,9 @@
       <mat-form-field>
 
         <input matInput type="email" name="email"
-          ngModel #email="ngModel" 
+          ngModel #email="ngModel"
+          [ngModelOptions]="{updateOn: 'blur'}" 
+          (ngModelChange)="onEmailChange($event)"
           required
           minlength="3"
           maxlength="20"
@@ -55,15 +57,18 @@
   </mat-card-content>
   
 </mat-card>
-
-<!-- <div class="form-val">
+<br>
+<div class="form-val">
+  <span>Form values: </span>
   {{loginForm.value | json}} 
-</div>     -->
+</div>    
 
-<!-- <div class="form-val"> 
+<div class="form-val"> 
+  <span>Email value and password value: </span>
   {{email.value + ' ' + password.value}}
-</div>  -->
+</div> 
 
 <div class="form-val">
+  <span>Email errors: </span>
   {{email.errors | json}} 
 </div>
