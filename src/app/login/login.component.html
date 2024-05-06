@@ -7,15 +7,17 @@
 
       <mat-form-field>
 
-        <input matInput type="email" name="email"
-          ngModel #email="ngModel"
-          [ngModelOptions]="{updateOn: 'blur'}" 
-          (ngModelChange)="onEmailChange($event)"
+        <input matInput type="email" name="Email"
+          ngModel #email="ngModel"         
           required
           minlength="3"
           maxlength="20"
           email         
-          placeholder="Email">         
+          placeholder="Email">    
+<!-- 
+[ngModelOptions]="{updateOn: 'blur', name: 'Email', standalone: true}" 
+(ngModelChange)="onEmailChange($event)"
+-->
 
         <mat-error *ngIf="email.errors?.required">
           The error is mandatory!
