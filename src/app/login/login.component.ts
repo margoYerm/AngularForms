@@ -14,8 +14,16 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {}
 
+  /* //for Login button
   login(loginForm: NgForm) {
     console.log(loginForm.value, loginForm.valid) //now this obg contains fields, that can be filled or empty, and true 
+  }*/
+
+  //For ngSubmit, with native event
+  login(loginForm: NgForm, submit) {
+    console.log(loginForm.value, loginForm.valid, submit) //{email: 'hello@gmai.com', password: 'azerty'} true, SubmitEvent {...}
   }
+
+  
 
 }

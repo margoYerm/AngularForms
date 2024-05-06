@@ -2,7 +2,8 @@
   <mat-card-title>Login</mat-card-title>
   <mat-card-content>
 
-    <form class="login-form data-form" #loginForm="ngForm">
+    <form class="login-form data-form" #loginForm="ngForm"
+    (ngSubmit)="login(loginForm, $event)">
 
       <mat-form-field>
 
@@ -12,8 +13,7 @@
           minlength="3"
           maxlength="20"
           email         
-          placeholder="Email">
-          <!--  pattern="[a-z+]" -->
+          placeholder="Email">         
 
         <mat-error *ngIf="email.errors?.required">
           The error is mandatory!
@@ -40,9 +40,15 @@
       </mat-form-field>
 
       <button mat-raised-button color="primary"
-        (click)="login(loginForm)">
+        type="submit"
+        [disabled]="!loginForm.valid">
         Login
       </button>
+      
+      <!-- <button mat-raised-button color="primary"
+        (click)="login(loginForm)">
+        Login
+      </button> -->
 
     </form>
 
