@@ -7,8 +7,26 @@
       <mat-form-field>
 
         <input matInput type="email" name="email"
-          ngModel #email="ngModel"
+          ngModel #email="ngModel" 
+          required
+          minlength="3"
+          maxlength="20"
+          email         
           placeholder="Email">
+          <!--  pattern="[a-z+]" -->
+
+        <mat-error *ngIf="email.errors?.required">
+          The error is mandatory!
+        </mat-error>
+
+        <mat-error *ngIf="email.errors?.minlength">
+          Your e-mail might have {{email.errors?.minlength.required}} chars,
+          but it only has {{email.errors?.minlength.actualLength}}
+        </mat-error>
+
+        <mat-error *ngIf="email.errors?.email">
+          This is not a valid email.
+        </mat-error>
 
       </mat-form-field>
 
@@ -16,7 +34,8 @@
 
         <input matInput type="password" name="password"
           ngModel #password="ngModel"
-          placeholder="Password">
+          required 
+          placeholder="Password">        
 
       </mat-form-field>
 
@@ -35,6 +54,10 @@
   {{loginForm.value | json}} 
 </div>     -->
 
-<div class="form-val"> 
+<!-- <div class="form-val"> 
   {{email.value + ' ' + password.value}}
-</div> 
+</div>  -->
+
+<div class="form-val">
+  {{email.errors | json}} 
+</div>
