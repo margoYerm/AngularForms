@@ -7,13 +7,14 @@
 
       <mat-form-field>
 
-        <input matInput type="email" name="Email"
-          ngModel #email="ngModel"         
+        <input matInput type="email" name="email"
+          [(ngModel)]="initialVal.email"
+          #email="ngModel"
           required
           minlength="3"
           maxlength="20"
-          email         
-          placeholder="Email">    
+          email
+          placeholder="Email">
 <!-- 
 [ngModelOptions]="{updateOn: 'blur', name: 'Email', standalone: true}" 
 (ngModelChange)="onEmailChange($event)"
@@ -37,9 +38,10 @@
       <mat-form-field>
 
         <input matInput type="password" name="password"
-          ngModel #password="ngModel"
-          required 
-          placeholder="Password">        
+          [(ngModel)]="initialVal.password"
+          #password="ngModel"
+          required
+          placeholder="Password">
 
       </mat-form-field>
 

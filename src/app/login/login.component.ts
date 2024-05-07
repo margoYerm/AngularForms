@@ -8,7 +8,10 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
+  initialVal = {
+    email: 'hello@gmail.com',
+    password: 'azerty123',
+  }
 
   constructor() {}
 
@@ -21,12 +24,13 @@ export class LoginComponent implements OnInit {
 
   //For ngSubmit, with native event
   login(loginForm: NgForm, submit) {
-    console.log(loginForm.value, loginForm.valid, submit) //{email: 'hello@gmai.com', password: 'azerty'} true, SubmitEvent {...}
+    console.log(loginForm.value, loginForm.valid, submit); //{email: 'hello@gmai.com', password: 'azerty'} true, SubmitEvent {...}
+    console.log('Initial form value', this.initialVal);
   } 
 
   //this method print in console each new value from the email input
-  onEmailChange(change) {
+  /*onEmailChange(change) {
     console.log('Email onChange ', change)
-  }
+  }*/
 
 }
