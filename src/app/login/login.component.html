@@ -8,7 +8,7 @@
       <mat-form-field>
 
         <input matInput type="email" name="email"
-          [(ngModel)]="initialVal.email"
+          ngModel
           #email="ngModel"
           required
           minlength="3"
@@ -38,21 +38,36 @@
       <mat-form-field>
 
         <input matInput type="password" name="password"
-          [(ngModel)]="initialVal.password"
+          ngModel
           #password="ngModel"
-          required passwordStrength
+          required
+          passwordStrength
+          minlength="8"
           placeholder="Password">
 
-        <mat-error *ngIf="password.errors?.required">
-          The password is mandatory!
-        </mat-error>
+          <!-- We define priority in passing arguments in the pipe,
+        and then we adding as error for tell angular that this is our error obj, 
+        and we will use it to access to the pipe output (for condition each error) -->
+          <!-- For save material styles we should use ng-container for errors -->
+        <mat-error *ngIf="password.errors |
+         onlyOneError:['required', 'minlength', 'passwordStrength'] as error">
+          <ng-container *ngIf="password.errors?.required">
+            The password is mandatory!
+          </ng-container>
 
-        <!-- in this *ngIf we checking output from createPasswordStrengthValidator  -->
-        <mat-error *ngIf="password.errors?.passwordStrength">
-          Your password must have lower case, upper case and numeric characters.
-        </mat-error>
+          <!-- in this *ngIf we checking output from createPasswordStrengthValidator  -->
+          <ng-container *ngIf="error.passwordStrength" class="field-message"> 
+            Your password must have lower case, upper case and numeric characters.
+          </ng-container>
 
+          <ng-container *ngIf="error.minlength" class="field-message">
+            Your password might have {{error.minlength.required}} chars,
+            but it only has {{error.minlength.actualLength}}
+          </ng-container>
+        </mat-error>       
       </mat-form-field>
+
+      
 
       <button mat-raised-button color="primary"
         type="submit"
@@ -84,4 +99,9 @@
 <div class="form-val">
   <span>Email errors: </span>
   {{email.errors | json}} 
+</div>
+
+<div class="form-val">
+  <span>Password errors: </span>
+  {{password.errors | json}} 
 </div>
