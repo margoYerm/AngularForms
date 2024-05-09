@@ -20,3 +20,10 @@
 } 
 
 
+#reactive-login-form {  
+  .mat-mdc-form-field-error-wrapper {
+    padding: 0;
+    border: 1px solid pink;
+  }
+}
+
