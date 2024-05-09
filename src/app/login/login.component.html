@@ -1,5 +1,5 @@
 <mat-card class="login-page">
-  <mat-card-title>Login</mat-card-title>
+  <mat-card-title>Login (Template-Driven)</mat-card-title>
   <mat-card-content>
 
     <form class="login-form data-form" #loginForm="ngForm"
@@ -36,7 +36,6 @@
       </mat-form-field>
 
       <mat-form-field>
-
         <input matInput type="password" name="password"
           ngModel
           #password="ngModel"
@@ -50,7 +49,8 @@
         and we will use it to access to the pipe output (for condition each error) -->
           <!-- For save material styles we should use ng-container for errors -->
         <mat-error *ngIf="password.errors |
-         onlyOneError:['required', 'minlength', 'passwordStrength'] as error">
+          onlyOneError:['required', 'minlength', 'passwordStrength'] as error">
+          
           <ng-container *ngIf="password.errors?.required">
             The password is mandatory!
           </ng-container>
@@ -64,10 +64,9 @@
             Your password might have {{error.minlength.required}} chars,
             but it only has {{error.minlength.actualLength}}
           </ng-container>
-        </mat-error>       
-      </mat-form-field>
 
-      
+        </mat-error>
+      </mat-form-field>
 
       <button mat-raised-button color="primary"
         type="submit"
