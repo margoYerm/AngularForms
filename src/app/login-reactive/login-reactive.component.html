@@ -50,8 +50,14 @@
       </mat-form-field>
 
       <button mat-raised-button color="primary"
-        [disabled]="!form.valid">
+        [disabled]="!form.valid"
+        (click)="login()">
         Login
+      </button>
+
+      <button mat-raised-button class="btn-reset"
+        (click)="reset()">
+        Reset
       </button>
 
     </form>
