@@ -1,0 +1,18 @@
+<!-- [formGroup]="form" binding this form with class -->
+<div [formGroup]="form">
+  <mat-form-field>
+
+    <!-- matInput for field look correct on the screen -->
+    <!-- formControlName="title" name of class form property -->
+    <!-- #title local template variable, for mat-hint in this case -->
+    <input matInput placeholder="Course title" formControlName="title" #title>
+
+    <mat-hint align="end">
+      {{title.value.length}} / 60
+    </mat-hint>
+
+    <mat-error *ngIf="courseTitle.errors?.titleExists">
+      The title is already being used.
+    </mat-error>
+  </mat-form-field>  
+</div>
