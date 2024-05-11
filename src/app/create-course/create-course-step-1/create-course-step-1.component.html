@@ -1,7 +1,7 @@
 <!-- [formGroup]="form" binding this form with class -->
 <div [formGroup]="form">
-  <mat-form-field>
 
+  <mat-form-field>
     <!-- matInput for field look correct on the screen -->
     <!-- formControlName="title" name of class form property -->
     <!-- #title local template variable, for mat-hint in this case -->
@@ -15,4 +15,39 @@
       The title is already being used.
     </mat-error>
   </mat-form-field>  
+
+
+  <mat-form-field>
+    <!-- [matDatepicker] for link input with calendar -->
+    <!-- formControlName="releasedAt" to link template with class -->
+    <input matInput [matDatepicker]="releaseDatePicker" 
+      formControlName="releasedAt"
+      placeholder="Release date" >
+
+    <!-- Button for show datepicker -->
+    <!-- [for] for link button with calendar -->
+    <!-- matSuffix told that this btn will be showing after input inside mat-form-field -->
+    <mat-datepicker-toggle 
+      [for]="releaseDatePicker"
+      matSuffix
+    ></mat-datepicker-toggle>
+
+    <!-- Datepicker calendar -->
+    <mat-datepicker #releaseDatePicker></mat-datepicker>
+  </mat-form-field>
+
+
+  <mat-checkbox color="primary" formControlName="downloadsAllowed">
+    Downloads Allowed?
+  </mat-checkbox>
+
+  <mat-form-field appearance="outline">
+    <textarea matInput placeholder="Description"
+      formControlName="longDescription"></textarea>
+  </mat-form-field>
+</div>
+
+<!-- debugging element -->
+<div class="form-val">
+  {{ form.value | json }}
 </div>

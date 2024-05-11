@@ -4,6 +4,7 @@ import {CoursesService} from '../../services/courses.service';
 import {Observable} from 'rxjs';
 import {filter} from 'rxjs/operators';
 import { courseTitleValidator } from '../../validators/course-title.validator';
+import { MatDatepicker } from '@angular/material/datepicker';
 
 @Component({
   selector: 'create-course-step-1',
@@ -20,7 +21,10 @@ export class CreateCourseStep1Component implements OnInit {
       ],
       asyncValidators: [courseTitleValidator(this.courses)],
       updateOn: 'blur', //for check input after focus loose
-    }]
+    }],
+    releasedAt: [new Date(), Validators.required],
+    downloadsAllowed: [false, Validators.requiredTrue],
+    longDescription: ['', [Validators.required, Validators.minLength(10)]]
   })
 
   // inject FormBuilder service
