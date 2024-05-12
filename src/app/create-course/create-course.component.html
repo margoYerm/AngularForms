@@ -6,10 +6,12 @@
   <!-- [linear]="true" means, that the user can pass to step 2 after valid step 1 -->
   <mat-horizontal-stepper class="mat-elevation-z5" 
     labelPosition="bottom"
-    [linear]="true">
+    [linear]="false"> 
 
     <!-- check that the form is valid in this step -->
-    <mat-step [stepControl]="step1.form">
+    <!-- errorMessage this message will be showing to user if form on this step
+    is not valid when we use [linear]="false" in stepper -->
+    <mat-step [stepControl]="step1.form" errorMessage="Landing page in error">
       <ng-template matStepLabel>Course landing page details</ng-template>
 
       <!-- access to the public variable form (default) in this component -->
@@ -25,7 +27,7 @@
     </mat-step>
 
 
-    <mat-step>
+    <mat-step errorMessage="Pricing in error">
       <ng-template matStepLabel>Course pricing details</ng-template>
       <create-course-step-2></create-course-step-2>
 

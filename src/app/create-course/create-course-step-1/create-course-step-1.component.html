@@ -18,6 +18,21 @@
 
 
   <mat-form-field>
+    <mat-select placeholder="Select category" formControlName="category">
+      <!-- Each material option needs value and description for user -->
+      <!-- This id hard code, when we need it's -->
+      <!-- <mat-option [value]="BEGINNER">Beginner</mat-option> -->
+
+      <!-- In our case we will accept options from the server -->
+      <ng-container *ngFor="let category of (courseCategories$ | async)">
+        <mat-option [value]="category.code">{{category.description}}</mat-option>
+      </ng-container>
+
+    </mat-select>
+  </mat-form-field>
+
+
+  <mat-form-field>
     <!-- [matDatepicker] for link input with calendar -->
     <!-- formControlName="releasedAt" to link template with class -->
     <input matInput [matDatepicker]="releaseDatePicker" 
