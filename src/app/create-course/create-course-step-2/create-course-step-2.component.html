@@ -5,6 +5,12 @@
     <mat-radio-button value="premium">Premium</mat-radio-button>
   </mat-radio-group>
 
+  <!-- Nested reusable component for upload files to the server and 
+  add the status valid to this form after successfully downloaded 
+  files to the server. We should add 1 .png file to form valid -->
+  <file-upload requiredFileType="image/png"
+  formControlName="thumbnail"></file-upload>
+
   <mat-form-field>
     <input matInput placeholder="Price" formControlName="price" type="number">
   </mat-form-field>
@@ -31,7 +37,13 @@
   </mat-form-field>
 
 </div>
+<br><hr>
+<!-- For check custom validator -->
+<div class="form-val">
+  Form validity state: {{ form.valid }}
+</div>
 
 <div class="form-val">
   {{ form.value | json }}
 </div>
+<br><hr>

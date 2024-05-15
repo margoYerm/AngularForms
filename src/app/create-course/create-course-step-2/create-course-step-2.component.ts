@@ -16,13 +16,16 @@ export class CreateCourseStep2Component implements OnInit {
       Validators.required,
       Validators.min(1), //for numbers
       Validators.max(9999),
-      Validators.pattern("[0-9]"), //it's mean that we can input just numbers
+      Validators.pattern("[0-9]+"), //it's mean that we can input just numbers
     ]],
+    //custom form control, null is name of uploaded file
+    thumbnail: [null],
     promoStartAt: [null], 
     promoEndAt: [null], 
+    fileUpload: [],
   }, {
     validators: [createPromoRangeValidator()], // this array for form level 
-    updateOn: 'blur',
+    //updateOn: 'blur',
   });
 
   constructor( private fb: FormBuilder) {}

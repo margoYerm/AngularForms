@@ -1,2 +1,34 @@
 
+<!-- Invisible part because hard to styling, file-input for hide this elem -->
+<!-- (change) contains link to checked file in local file system and we will 
+send this data to the server -->
+<input type="file" class="file-input" #fileUpload 
+  (change)="onFileSelected($event)">
+
+<!-- Visible part of the template -->
+<div class="file-upload">
+  <mat-form-field>
+    <!-- If file uploaded here will be a file name, if not - empty input -->
+    <input matInput [disabled]="true" [value]="fileName">
+  </mat-form-field>
+
+  <!-- button with small icon -->
+  <!--  (click)="fileUpload.click()" will activate #fileUpload click 
+    and it will open file upload dialog -->
+  <button mat-mini-fab color="primary" class="upload-btn"
+    (click)="onClick(fileUpload)"
+    [disabled]="disabled"> 
+    <mat-icon>attach_file</mat-icon>
+   
+    <!-- (click)="fileUpload.click()"; changed for ControlValueAccessor Step 4.
+      [disabled]="disabled" on Step 5. Assigned with the flag value
+     -->
+  </button>
+</div>
+
+<mat-progress-bar class="progress-bar"
+  mode="determinate"
+  *ngIf="uploadProgress"
+  [value]="uploadProgress">
+</mat-progress-bar>
 
